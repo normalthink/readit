@@ -143,13 +143,14 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
   }, [errors])
 
+  //1 by isMounted,setIsMounted = useState<>(f)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setIsMounted(true)
     }
   }, [])
 
-  //by isMounted,setIsMounted = useState<>(f)
+  //2 에디터 초기화
   useEffect(() => {
     const init = async () => {
       await initializeEditor()
@@ -170,6 +171,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
     }
   }, [isMounted, initializeEditor])
 
+
   async function onSubmit(data: FormData) {
     const blocks = await ref.current?.save()
 
@@ -179,7 +181,7 @@ export const Editor: React.FC<EditorProps> = ({ subredditId }) => {
       subredditId,
     }
 
-    createPost(payload)
+    createPost(payload) //const { mutate: createPost }
   }
 
   if (!isMounted) {
