@@ -17,12 +17,17 @@ import { getAuthSession } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { notFound } from 'next/navigation'
 
+
 interface PageProps {
   params: {
     slug: string
   }
 }
 
+  //nextjs의 dynamic routes has not changed form the approach. we have in this page. 
+  //it's the same thing. we can literally copy the props like this ({ params }: PageProps).
+  //the slug params are passed the same way into this component just like with the other page.tsx 
+  //becase we're still inside of the dynamic routes
 const page = async ({ params }: PageProps) => {
   const { slug } = params
 
@@ -40,7 +45,6 @@ const page = async ({ params }: PageProps) => {
           comments: true,
           subreddit: true,
         },
-
         //무한스크롤 단위 -src 글로벌 구성에서 몇 개를 참조할 것인지 선언 
         take: INFINITE_SCROLL_PAGINATION_RESULTS, 
       },
