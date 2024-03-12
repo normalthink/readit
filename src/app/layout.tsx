@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 import { Toaster } from "@/components/ui/Toaster";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
@@ -15,26 +16,29 @@ export default function RootLayout({
   children,
   authModal, // for. @authModal 평행 or 분기처리
 }: {
-  children: React.ReactNode
-  authModal: React.ReactNode
+  children: React.ReactNode;
+  authModal: React.ReactNode;
 }) {
   return (
     <html
-      lang='en'
+      lang="en"
       className={cn(
-        'bg-white text-slate-900 antialiased light',
+        "bg-white text-slate-900 antialiased light",
         inter.className
-      )}>
-      <body className='min-h-screen pt-12 bg-slate-50 antialiased'>
+      )}
+    >
+      <body className="min-h-screen pt-12 bg-slate-50 antialiased">
+        <Providers>
           {/* @ts-expect-error Server Component */}
           <Navbar />
 
-          {authModal} 
+          {authModal}
 
-          <div className='container max-w-7xl mx-auto h-full pt-12'>
+          <div className="container max-w-7xl mx-auto h-full pt-12">
             {children}
           </div>
-        <Toaster />
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );
