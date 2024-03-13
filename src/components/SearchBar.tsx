@@ -57,6 +57,7 @@ const SearchBar: FC<SearchBarProps> = ({}) => {
     enabled: false,
   })
 
+  // 검색창에서 키워드 작성후 검색 = '엔터'하기 
   useEffect(() => {
     setInput('')
   }, [pathname])
